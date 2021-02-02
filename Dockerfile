@@ -4,10 +4,14 @@ ARG ARCH=amd64
 EXPOSE 19132/udp
 VOLUME /mc-data
 
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
 RUN ["mkdir", "/opt/server"]
 RUN ["mkdir", "/opt/server/downloads"]
-COPY ["start_server.py", "/opt/server"]
+COPY ["start_server.py", "/opt/server/start_server.py"]
 RUN ["chmod", "755", "/opt/server/start_server.py"]
+
+WORKDIR /opt/server/
 
 ENTRYPOINT /opt/server/start_server.py
 

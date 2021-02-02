@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 
 import urllib.request
 import zipfile
@@ -41,13 +41,13 @@ if not os.path.islink("./server/worlds/Bedrock level"):
 
 if not os.path.exists(data_dir+"/server.properties"):
     print("Moving server.properties into data directory")
-    os.rename("./server/server.properties", data_dir+"/server.properties")
+    shutil.move("./server/server.properties", data_dir+"/server.properties")
 else:
     os.remove("./server/server.properties")
 
 os.symlink(data_dir+"/server.properties", "./server/server.properties")
 
-os.environ["LD_LIBRARY_PATH"] = "./server"
+os.environ["LD_LIBRARY_PATH"] = "$LD_LIBRARY_PATH:./server"
 print("Starting Server")
 os.chdir("./server/")
 os.execl("./bedrock_server", "./bedrock_server")
