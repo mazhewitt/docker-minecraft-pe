@@ -16,11 +16,12 @@ def download_server(url, destination):
     urllib.request.urlretrieve (url, destination)
     return
 
-def setup_files(download_url, server_zip, data_dir):
+def setup_files(data_dir):
     print("Setting up files")
     os.chmod("./server/bedrock_server", 0o755)
     os.makedirs("./server/worlds", exist_ok=True)
     os.makedirs(data_dir+"/level", exist_ok=True)
+    os.makedirs(data_dir+"/backups/", exist_ok=True)
 
     if not os.path.islink("./server/worlds/Bedrock level"):
         os.symlink(data_dir+"/level", "./server/worlds/Bedrock level")
