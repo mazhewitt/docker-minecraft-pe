@@ -18,19 +18,24 @@ docker run --name minecraft_server --restart unless-stopped -dit  -p 19132:19132
 
 * To change the mode:
     * Stop the server 
+
 ```
 docker stop minecraft_server
 ```
+
     * Edit the "/home/minecraft/server/server.properties" file, change survival to creative, or easy to hard
     * Start the server again
+
 ```
 docker start minecraft_server
 ```
+
 * The server is backed up to the backups folder ever 4 hours
 * To restore a backup:
     * Stop the server
     * Remove the contents of the level directory
     * restore the archive into the level directory
+
 ```
 sudo su minecraft
 tar -zxvf /home/minecraft/server/backups/2021.01.20.00.00.01.tar.gz /home/minecraft/server/level
