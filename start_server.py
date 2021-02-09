@@ -14,7 +14,7 @@ data_dir = "/mc-data"
 server_dir = "./server"
 download_dir = "./downloads"
 
-if os.path.exists(server_zip):
+if os.path.isfile(server_zip):
     shutil.rmtree(server_zip)
 
 if os.path.exists(server_dir):
