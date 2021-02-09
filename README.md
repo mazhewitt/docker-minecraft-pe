@@ -4,7 +4,7 @@
 *  Add a user to run the server as
 *  Start the server
 *  The server will download the latest minecraft pe from MS
-* The data files will be kept in /home/minecraft/server
+*  The data files will be kept in /home/minecraft/server
 
 ```
 docker pull mazhewitt/docker-minecraft-pe
@@ -13,18 +13,18 @@ sudo mkdir /home/minecraft/server
 sudo chown -r minecraft:minecraft /home/minecraft/server
 docker run --name minecraft_server --restart unless-stopped -dit  -p 19132:19132/udp -v /home/minecraft/server:/mc-data mazhewitt/docker-minecraft-pe:1.0
 ```
-* The server by default will start a server in Easy Survival
+The server by default will start a server in Easy Survival
 
 
-* To change the mode:
-    * Stop the server 
+To change the mode:
+* Stop the server 
 
 ```
 docker stop minecraft_server
 ```
 
-    * Edit the "/home/minecraft/server/server.properties" file, change survival to creative, or easy to hard
-    * Start the server again
+* Edit the "/home/minecraft/server/server.properties" file, change survival to creative, or easy to hard
+* Start the server again
 
 ```
 docker start minecraft_server
