@@ -23,8 +23,7 @@ To change the mode:
 docker stop minecraft_server
 ```
 
-* Edit the "/home/minecraft/server/server.properties" file, change survival to creative, or easy to hard
-**do not change the level name**
+* Edit the "/home/minecraft/server/server.properties" file, change survival to creative, or easy to hard.  **do not change the level name**
 * Start the server again
 
 ```
