@@ -15,7 +15,7 @@ server_dir = "./server"
 download_dir = "./downloads"
 
 if os.path.isfile(server_zip):
-    shutil.rmtree(server_zip)
+    os.remove(server_zip)
 
 if os.path.exists(server_dir):
     shutil.rmtree(server_dir)
