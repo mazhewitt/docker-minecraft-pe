@@ -37,6 +37,9 @@ docker start minecraft_server
     * restore the archive into the level directory
 
 ```
+docker stop minecraft_server
 sudo su minecraft
+rm -rf /home/minecraft/server/level/*
 tar -zxvf /home/minecraft/server/backups/2021.01.20.00.00.01.tar.gz /home/minecraft/server/level
+docker start minecraft_server
 ```
