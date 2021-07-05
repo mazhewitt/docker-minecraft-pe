@@ -15,6 +15,7 @@ COPY ["version.sh", "/opt/server/version.sh"]
 
 RUN ["chmod", "755", "/opt/server/start_server.py"]
 RUN ["chmod", "755", "/opt/server/backup-minecraft.py"]
+RUN ["chmod", "755", "/opt/server/version.sh"]
 
 COPY ["backup-crontab", "/etc/cron.d/backup-crontab"]
 RUN ["crontab", "/etc/cron.d/backup-crontab"]
