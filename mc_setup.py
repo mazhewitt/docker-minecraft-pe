@@ -4,6 +4,7 @@ import os
 import shutil
 import stat
 import re
+import subprocess
 
 def unzip_server(file):
     print ("Unzipping Server")
@@ -44,17 +45,12 @@ def demote(user_uid, user_gid):
     report_ids('finished demotion')
 
 def grab_download_url(download_page):
-    req = urllib.request.Request(
-        download_page, 
-        data=None, 
-        headers={
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
-        }
-    )
-    with urllib.request.urlopen(req) as response:
-        html = response.read().decode('utf-8')
-        urlMatcher = re.search("(https://minecraft.azureedge.net/bin-linux/[^\"]*)", html)
-        if urlMatcher is None:
-            print("Cannot find the version url - maybe download failed?")
-            print (html)
-        return urlMatcher.group()
+
+    html = subprocess.run(['./version.sh', download_page], stdout=subprocess.PIPE, encoding="utf-8").stdout
+    print ("read : ")
+    #print (html)
+    urlMatcher = re.search("(https://minecraft.azureedge.net/bin-linux/[^\"]*)", html)
+    if urlMatcher is None:
+        print("Cannot find the version url - maybe download failed?")
+        print (html)
+    return urlMatcher.group()
