@@ -1,4 +1,4 @@
-FROM python:slim-buster
+FROM python:slim-bookworm
 
 ARG ARCH=amd64
 EXPOSE 19132/udp
