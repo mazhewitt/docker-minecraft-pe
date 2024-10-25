@@ -8,7 +8,7 @@ class TestServerSetup(unittest.TestCase):
 
         download_url = mc_setup.grab_download_url("https://www.minecraft.net/en-us/download/server/bedrock/")
         
-        self.assertTrue(download_url, "https://minecraft.azureedge.net/bin-linux/bedrock-server-1.17.2.01.zip")
+        self.assertTrue(download_url, "https://www.minecraft.net/bedrockdedicatedserver/bin-linux/bedrock-server-1.21.42.01.zip")
 
 if __name__ == '__main__':
     unittest.main()

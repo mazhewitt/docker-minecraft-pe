@@ -49,7 +49,7 @@ def grab_download_url(download_page):
     html = subprocess.run(['./version.sh', download_page], stdout=subprocess.PIPE, encoding="utf-8").stdout
     print ("read : ")
     #print (html)
-    urlMatcher = re.search("(https://minecraft.azureedge.net/bin-linux/[^\"]*)", html)
+    urlMatcher = re.search("(https://www.minecraft.net/bedrockdedicatedserver/bin-linux/[^\"]*)", html)
     if urlMatcher is None:
         print("Cannot find the version url - maybe download failed?")
         print (html)
