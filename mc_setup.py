@@ -1,10 +1,12 @@
-import urllib.request
+import requests
+from tqdm import tqdm
 import zipfile
 import os
 import shutil
-import stat
+
 import re
 import subprocess
+import certifi
 
 def unzip_server(file):
     print ("Unzipping Server")
@@ -13,9 +15,31 @@ def unzip_server(file):
     return
 
 def download_server(url, destination):
-    print ("Downloading the latestd Minecraft Bedrock Server")
-    urllib.request.urlretrieve (url, destination)
-    return
+    print(f"Starting download from: {url}")
+
+    # Define headers to mimic a browser request
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+    }
+
+    try:
+        # Adding headers to the request to mimic a web browser
+        with requests.get(url, stream=True, headers=headers, verify=False) as r:
+            r.raise_for_status()
+            total_size = int(r.headers.get('content-length', 0))
+            block_size = 1024  # 1 Kilobyte
+            progress_bar = tqdm(total=total_size, unit='iB', unit_scale=True)
+
+            with open(destination, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=block_size):
+                    progress_bar.update(len(chunk))
+                    f.write(chunk)
+
+            progress_bar.close()
+            print(f"Download completed: {destination}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error during download: {e}")
 
 def setup_files(data_dir):
     print("Setting up files")

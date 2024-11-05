@@ -11,7 +11,7 @@ docker pull mazhewitt/docker-minecraft-pe
 sudo useradd -m minecraft
 sudo mkdir /home/minecraft/server
 sudo chown -r minecraft:minecraft /home/minecraft/server
-docker run --name minecraft_server --restart unless-stopped -dit  -p 19132:19132/udp -v /home/minecraft/server:/mc-data mazhewitt/docker-minecraft-pe:1.2
+docker run --name minecraft_server --restart unless-stopped -dit  -p 19132:19132/udp -v /home/minecraft/server:/mc-data mazhewitt/docker-minecraft-pe:1.3
 ```
 The server by default will start a server in Easy Survival
 

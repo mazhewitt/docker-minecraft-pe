@@ -1,4 +1,4 @@
-Copyright 2021 Mazda Hewitt
+Copyright 2024 Mazda Hewitt
 
 SPDX short identifier: MIT
 
